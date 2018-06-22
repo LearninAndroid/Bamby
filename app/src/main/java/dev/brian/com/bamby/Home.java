@@ -92,6 +92,14 @@ public class Home extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }else if( id==R.id.parrots){
+        }else if(id == R.id.pet_vaccines){
+        }
+         else if(id ==  R.id.dog_carrier){
+        }else if(id == R.id.fish_bowls){
+        }else if(id == R.id.pet_collar){
+        }else if(id == R.id.pet_cushion){
+        }else if(id == R.id.pet_bags){
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

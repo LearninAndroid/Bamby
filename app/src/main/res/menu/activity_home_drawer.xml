@@ -3,35 +3,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <item android:title="Pets">
+        <menu>
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:icon="@drawable/cat_log"
+            android:title="Cats" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:icon="@drawable/fish_log"
+            android:title="Fish" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:icon="@drawable/dog_menu"
+            android:title="Dogs" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+            android:icon="@drawable/hamster"
+            android:title="Hamsters" />
+        <item
+            android:id="@+id/parrots"
+            android:icon="@drawable/parrot"
+            android:title="Parrots"
+            />
+        </menu>
+    </item>
 
-    <item android:title="Communicate">
+    <item android:title="Pet Products">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:icon="@drawable/pet_shampoo"
+                android:title="Shampoo" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:icon="@drawable/pet_food"
+                android:title="Pet Food" />
+            <item
+                android:id="@+id/pet_vaccines"
+                android:icon="@drawable/pet_vaccine"
+                android:title="Vaccines"/>
+        </menu>
+    </item>
+    <item android:title="Pet Accessories">
+        <menu>
+            <item
+                android:id="@+id/fish_bowls"
+                android:icon="@drawable/fish_bowl"
+                android:title="Fish Bowls"/>
+            <item
+                android:id="@+id/pet_collar"
+                android:icon="@drawable/collar"
+                android:title="Pet Collars"/>
+            <item
+                android:id="@+id/pet_cushion"
+                android:icon="@drawable/pet_cushion"
+                android:title="Pet Cushions"/>
+            <item
+                android:id="@+id/pet_bags"
+                android:icon="@drawable/pet_bag"
+                android:title="Pet Bags"/>
+            <item
+                android:id="@+id/dog_carrier"
+                android:icon="@drawable/pet_carrier"
+                android:title="Dog Carriers"/>
+
+        </menu>
+    </item>
+    <item android:title="Contact Us">
+        <menu>
+            <item
+                android:id="@+id/send_message"
+                android:icon="@drawable/ic_message_black_24dp"
+                android:title="Send Message"/>
         </menu>
     </item>
 
