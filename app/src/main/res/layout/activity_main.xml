@@ -50,12 +50,15 @@
                 android:focusable="true"/>
 
             <Button
+                android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/buttonstyle"
                 android:text="Join the club"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:clickable="true"
+                android:focusable="true"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
