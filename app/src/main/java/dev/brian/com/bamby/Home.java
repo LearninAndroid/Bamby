@@ -1,5 +1,6 @@
 package dev.brian.com.bamby;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -70,6 +71,9 @@ public class Home extends AppCompatActivity
         if (id == R.id.action_settings) {
             android.content.Intent settingsIntent = new android.content.Intent(Home.this,Settings.class);
             startActivity(settingsIntent);
+        }if(id==R.id.action_profile){
+            Intent profileIntent = new Intent(Home.this,Profile.class);
+            startActivity(profileIntent);
         }
 
         return super.onOptionsItemSelected(item);
