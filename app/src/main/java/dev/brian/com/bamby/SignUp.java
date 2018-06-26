@@ -1,7 +1,9 @@
 package dev.brian.com.bamby;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +13,13 @@ import android.widget.Toast;
 import dev.brian.com.bamby.Model.User;
 import io.realm.Realm;
 import io.realm.RealmAsyncTask;
+import io.realm.RealmQuery;
 
 public class SignUp extends AppCompatActivity {
 
     Button login,sign_up;
     EditText username,password,confirm_password,email;
+    AppCompatCheckBox compatCheckBox;
     Realm realm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,7 @@ public class SignUp extends AppCompatActivity {
         confirm_password = (EditText)findViewById(R.id.signup_confirm_password);
         email = (EditText) findViewById(R.id.signup_email);
         sign_up = (Button)findViewById(R.id.btn_signup);
+        compatCheckBox = (AppCompatCheckBox) findViewById(R.id.terms_check);
         realm = Realm.getDefaultInstance();
         login.setOnClickListener(new android.view.View.OnClickListener(){
              @Override
@@ -40,7 +45,31 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                AddUser(username.getText().toString(),password.getText().toString(),email.getText().toString());
+                if(username.getText().toString().isEmpty() ||
+                        password.getText().toString().isEmpty() ||
+                        confirm_password.getText().toString().isEmpty() ||
+                        email.getText().toString().isEmpty()){
+                    Toast.makeText(SignUp.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }if(!password.getText().toString().equals(confirm_password.getText().toString())){
+                    Toast.makeText(SignUp.this, "Make Sure Passwords Match", Toast.LENGTH_SHORT).show();
+                    return;
+                }if(!compatCheckBox.isChecked()){
+                    Toast.makeText(SignUp.this, "Please Agree To the terms of Agreement", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(checkIfUserExists(username.getText().toString())){
+                    Toast.makeText(SignUp.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else{
+                    AddUser(username.getText().toString(),password.getText().toString(),email.getText().toString());
+                    Toast.makeText(SignUp.this, "User Added Successfully", Toast.LENGTH_SHORT).show();
+                    Intent homeActivity = new Intent(SignUp.this,Home.class);
+                    startActivity(homeActivity);
+                    finish();
+
+                }
             }
         });
     }
@@ -73,5 +102,18 @@ public class SignUp extends AppCompatActivity {
         });
 
     }
+    private boolean checkIfUserExists(final String username){
+        boolean success = true;
+        RealmQuery<User> realmQuery = realm.where(User.class);
+        realmQuery.equalTo("username",username);
+        if(realmQuery.count()>0){
+            success = true;
+        }else{
+            success = false;
+        }
+        return success;
+
+    }
+
 
 }
