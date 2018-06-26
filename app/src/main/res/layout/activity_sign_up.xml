@@ -73,6 +73,7 @@
                     android:tint="@color/white"
                     android:src="@drawable/ic_person_outline_black_24dp"/>
                 <EditText
+                    android:id="@+id/signup_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/user_icon"
@@ -101,6 +102,7 @@
                     android:tint="@color/white"
                     android:src="@drawable/ic_lock_outline_black_24dp"/>
                 <EditText
+                    android:id="@+id/signup_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/password_icon"
@@ -130,6 +132,7 @@
                     android:tint="@color/white"
                     android:src="@drawable/ic_lock_outline_black_24dp"/>
                 <EditText
+                    android:id="@+id/signup_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/confirm_icon"
@@ -159,6 +162,7 @@
                     android:tint="@color/white"
                     android:src="@drawable/ic_message_black_24dp"/>
                 <EditText
+                    android:id="@+id/signup_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/email_icon"
