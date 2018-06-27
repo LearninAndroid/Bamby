@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import dev.brian.com.bamby.Realm.Shared;
+
 public class MainActivity extends AppCompatActivity {
     Button Login;
     Button SignUp;
@@ -33,5 +35,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Shared shared = new Shared(getApplicationContext());
+        shared.firstTime();
     }
 }

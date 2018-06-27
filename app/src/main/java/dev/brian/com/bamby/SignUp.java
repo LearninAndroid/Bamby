@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import dev.brian.com.bamby.Model.User;
+import dev.brian.com.bamby.Realm.Shared;
 import io.realm.Realm;
 import io.realm.RealmAsyncTask;
 import io.realm.RealmQuery;
@@ -55,7 +56,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Make Sure Passwords Match", Toast.LENGTH_SHORT).show();
                     return;
                 }if(!compatCheckBox.isChecked()){
-                    Toast.makeText(SignUp.this, "Please Agree To the terms of Agreement", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Please Agree To the Terms of Agreement", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(checkIfUserExists(username.getText().toString())){
@@ -68,6 +69,8 @@ public class SignUp extends AppCompatActivity {
                     Intent homeActivity = new Intent(SignUp.this,Home.class);
                     startActivity(homeActivity);
                     finish();
+                    Shared shared = new Shared(getApplicationContext());
+                    shared.secondTime();
 
                 }
             }
