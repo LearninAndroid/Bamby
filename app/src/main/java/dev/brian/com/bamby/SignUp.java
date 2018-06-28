@@ -105,7 +105,7 @@ public class SignUp extends AppCompatActivity {
         });
 
     }
-    private boolean checkIfUserExists(final String username){
+    public boolean checkIfUserExists(final String username){
         boolean success = true;
         RealmQuery<User> realmQuery = realm.where(User.class);
         realmQuery.equalTo("username",username);
