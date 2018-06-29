@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import dev.brian.com.bamby.Home;
 import dev.brian.com.bamby.MainActivity;
 
 public class Shared {
@@ -27,7 +28,7 @@ public class Shared {
     }
     public void firstTime(){
         if(!this.login()){
-            Intent loginIntent = new Intent(context, MainActivity.class);
+            Intent loginIntent = new Intent(context, Home.class);
         }
 
     }

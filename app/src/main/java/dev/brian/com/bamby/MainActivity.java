@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText username;
     @BindView(R.id.login_password)
     EditText password;
+    
     Utils  utils = new Utils();
 
     @Override

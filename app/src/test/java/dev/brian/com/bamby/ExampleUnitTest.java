@@ -2,6 +2,11 @@ package dev.brian.com.bamby;
 
 import org.junit.Test;
 
+import dev.brian.com.bamby.Model.User;
+import dev.brian.com.bamby.Realm.Base;
+import io.realm.Realm;
+import io.realm.RealmQuery;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +19,6 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
 }
