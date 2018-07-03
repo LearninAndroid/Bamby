@@ -1,7 +1,9 @@
 package dev.brian.com.bamby.ui.Register;
 
+import android.support.v7.widget.AppCompatCheckBox;
+
 public interface RegisterPresenter {
-    void onRegisterNewUser(String username,String password,String email);
-    void onPasswordMatchConfirm(String password,String confirm_password);
+    void onRegisterNewUser(String username,String password,String confirm,String email,AppCompatCheckBox appCompatCheckBox);
+    void onLognClicked();
 
 }

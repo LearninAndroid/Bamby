@@ -21,7 +21,7 @@ import dev.brian.com.bamby.Realm.Shared;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @BindView(R.id.signup_username)
     EditText username;
@@ -34,18 +34,18 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.terms_check)
     AppCompatCheckBox compatCheckBox;
 
-    Button login,sign_up;
-   // EditText username,password,confirm_password,email;
-   // AppCompatCheckBox compatCheckBox;
-    Realm realm;
+
+    RegisterPresenter mRegisterPresenter;
 
     @OnClick(R.id.btn_signup)
     public void onSignUpClicked(){
+        mRegisterPresenter.onRegisterNewUser(username.getText().toString(),password.getText().toString(),confirm_password.getText().toString(),
+                email.getText().toString(),compatCheckBox);
 
     }
     @OnClick(R.id.btn_loginsign)
     public void onLoginClicked(){
-
+        mRegisterPresenter.onLognClicked();
     }
 
     @Override
@@ -53,93 +53,50 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
-        login = (Button)findViewById(R.id.btn_loginsign);
-        sign_up = (Button)findViewById(R.id.btn_signup);
-        compatCheckBox = (AppCompatCheckBox) findViewById(R.id.terms_check);
-        realm = Realm.getDefaultInstance();
-        login.setOnClickListener(new android.view.View.OnClickListener(){
-             @Override
-            public void onClick(android.view.View v) {
-                android.content.Intent homeIntent = new android.content.Intent(RegisterActivity.this,LoginActivity.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        });
-        sign_up.setOnClickListener(new View.OnClickListener(){
+        mRegisterPresenter = new RegisterPresenterImpl(RegisterActivity.this);
 
-            @Override
-            public void onClick(View v) {
-                if(username.getText().toString().isEmpty() ||
-                        password.getText().toString().isEmpty() ||
-                        confirm_password.getText().toString().isEmpty() ||
-                        email.getText().toString().isEmpty()){
-                    Toast.makeText(RegisterActivity.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
-                    return;
-                }if(!password.getText().toString().equals(confirm_password.getText().toString())){
-                    Toast.makeText(RegisterActivity.this, "Make Sure Passwords Match", Toast.LENGTH_SHORT).show();
-                    return;
-                }if(!compatCheckBox.isChecked()){
-                    Toast.makeText(RegisterActivity.this, "Please Agree To the Terms of Agreement", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(checkIfUserExists(username.getText().toString())){
-                    Toast.makeText(RegisterActivity.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else{
-                    AddUser(username.getText().toString(),password.getText().toString(),email.getText().toString());
-                    Toast.makeText(RegisterActivity.this, "User Added Successfully", Toast.LENGTH_SHORT).show();
-                    Intent homeActivity = new Intent(RegisterActivity.this,Home.class);
-                    startActivity(homeActivity);
-                    finish();
-                    Shared shared = new Shared(getApplicationContext());
-                    shared.secondTime();
-
-                }
-            }
-        });
     }
+
     @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        realm.close();
-    }
-    private void AddUser(final String usern, final String pass,final String mail){
-        realm.executeTransactionAsync(new Realm.Transaction() {
-
-            @Override
-            public void execute(Realm bgRealm) {
-                User user = bgRealm.createObject(User.class);
-                user.setUsername(usern);
-                user.setEmail(mail);
-                user.setPassword(pass);
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-                Log.v("Database","Transaction Completed Successfully");
-            }
-        }, new Realm.Transaction.OnError() {
-            @Override
-            public void onError(Throwable error) {
-                Log.e("Realm Error:",error.getMessage());
-            }
-
-        });
-
-    }
-    public boolean checkIfUserExists(final String username){
-        boolean success = true;
-        RealmQuery<User> realmQuery = realm.where(User.class);
-        realmQuery.equalTo("username",username);
-        if(realmQuery.count()>0){
-            success = true;
-        }else{
-            success = false;
-        }
-        return success;
-
+    public void onRegisterValidate() {
+        Toast.makeText(getApplicationContext(), "Please Fill In All Required Fields", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onRegisterSuccess() {
+        Toast.makeText(getApplicationContext(), "New User Added Successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRegisterFailure() {
+        Toast.makeText(getApplicationContext(), "Failed To Add User, Please Try Again Later", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNavigateToHome() {
+        Intent homeIntent = new Intent(RegisterActivity.this,Home.class);
+        startActivity(homeIntent);
+    }
+
+    @Override
+    public void onNavigateToLogin() {
+        Intent loginIntent = new Intent(RegisterActivity.this,LoginActivity.class);
+        startActivity(loginIntent);
+    }
+
+    @Override
+    public void onMatchValidate() {
+        Toast.makeText(getApplicationContext(), "Make Sure That Passwords Match", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onTermsValidate() {
+        Toast.makeText(getApplicationContext(), "Please Accept Our Terms of Agreement ", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onUserExists() {
+        Toast.makeText(getApplicationContext(), "Username Already Taken, Try Changing Username", Toast.LENGTH_SHORT).show();
+    }
 
 }
