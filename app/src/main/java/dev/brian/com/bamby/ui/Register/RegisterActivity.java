@@ -1,4 +1,4 @@
-package dev.brian.com.bamby;
+package dev.brian.com.bamby.ui.Register;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import dev.brian.com.bamby.Home;
+import dev.brian.com.bamby.LoginActivity;
 import dev.brian.com.bamby.Model.User;
+import dev.brian.com.bamby.R;
 import dev.brian.com.bamby.Realm.Shared;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
-public class SignUp extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
+
+
 
     Button login,sign_up;
     EditText username,password,confirm_password,email;
@@ -36,7 +42,7 @@ public class SignUp extends AppCompatActivity {
         login.setOnClickListener(new android.view.View.OnClickListener(){
              @Override
             public void onClick(android.view.View v) {
-                android.content.Intent homeIntent = new android.content.Intent(SignUp.this,LoginActivity.class);
+                android.content.Intent homeIntent = new android.content.Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
@@ -49,23 +55,23 @@ public class SignUp extends AppCompatActivity {
                         password.getText().toString().isEmpty() ||
                         confirm_password.getText().toString().isEmpty() ||
                         email.getText().toString().isEmpty()){
-                    Toast.makeText(SignUp.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }if(!password.getText().toString().equals(confirm_password.getText().toString())){
-                    Toast.makeText(SignUp.this, "Make Sure Passwords Match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Make Sure Passwords Match", Toast.LENGTH_SHORT).show();
                     return;
                 }if(!compatCheckBox.isChecked()){
-                    Toast.makeText(SignUp.this, "Please Agree To the Terms of Agreement", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please Agree To the Terms of Agreement", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(checkIfUserExists(username.getText().toString())){
-                    Toast.makeText(SignUp.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else{
                     AddUser(username.getText().toString(),password.getText().toString(),email.getText().toString());
-                    Toast.makeText(SignUp.this, "User Added Successfully", Toast.LENGTH_SHORT).show();
-                    Intent homeActivity = new Intent(SignUp.this,Home.class);
+                    Toast.makeText(RegisterActivity.this, "User Added Successfully", Toast.LENGTH_SHORT).show();
+                    Intent homeActivity = new Intent(RegisterActivity.this,Home.class);
                     startActivity(homeActivity);
                     finish();
                     Shared shared = new Shared(getApplicationContext());

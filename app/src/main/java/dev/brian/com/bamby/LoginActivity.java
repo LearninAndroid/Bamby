@@ -14,6 +14,7 @@ import dev.brian.com.bamby.ui.Login.LoginPresenterImpl;
 import dev.brian.com.bamby.ui.Login.LoginView;
 import dev.brian.com.bamby.Model.Utils;
 import dev.brian.com.bamby.Realm.Shared;
+import dev.brian.com.bamby.ui.Register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
@@ -21,8 +22,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     EditText username;
     @BindView(R.id.login_password)
     EditText password;
-    
-    Utils  utils = new Utils();
     LoginPresenter mLoginPresenter;
 
     @Override
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @OnClick(R.id.signup)
     public void onSignUpClicked(){
-        Intent signUp = new Intent(LoginActivity.this, SignUp.class);
+        Intent signUp = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(signUp);
         finish();
     }
@@ -70,5 +69,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         Intent homeActivity = new Intent(LoginActivity.this,Home.class);
         startActivity(homeActivity);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

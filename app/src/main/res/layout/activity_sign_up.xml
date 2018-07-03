@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".ui.Register.RegisterActivity">
     <android.support.v7.widget.CardView
         android:background="@drawable/buttonstyle"
         android:layout_width="match_parent"
