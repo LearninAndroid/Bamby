@@ -1,4 +1,4 @@
-package dev.brian.com.bamby.Login;
+package dev.brian.com.bamby.ui.Login;
 
 import android.text.TextUtils;
 
@@ -36,6 +36,7 @@ public class LoginPresenterImpl implements LoginPresenter {
         realmQuery.equalTo("username",username).equalTo("password",password).findAll();
         if(realmQuery.count()>0){
             mLoginView.onLoginSuccess();
+            mLoginView.onNavigateToHome();
         }else{
             mLoginView.onLoginFailed();
         }

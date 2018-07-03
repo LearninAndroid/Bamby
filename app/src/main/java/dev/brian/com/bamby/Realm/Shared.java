@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import dev.brian.com.bamby.Home;
-import dev.brian.com.bamby.MainActivity;
 
 public class Shared {
 

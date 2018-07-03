@@ -13,7 +13,6 @@ import android.widget.Toast;
 import dev.brian.com.bamby.Model.User;
 import dev.brian.com.bamby.Realm.Shared;
 import io.realm.Realm;
-import io.realm.RealmAsyncTask;
 import io.realm.RealmQuery;
 
 public class SignUp extends AppCompatActivity {
@@ -37,7 +36,7 @@ public class SignUp extends AppCompatActivity {
         login.setOnClickListener(new android.view.View.OnClickListener(){
              @Override
             public void onClick(android.view.View v) {
-                android.content.Intent homeIntent = new android.content.Intent(SignUp.this,MainActivity.class);
+                android.content.Intent homeIntent = new android.content.Intent(SignUp.this,LoginActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
