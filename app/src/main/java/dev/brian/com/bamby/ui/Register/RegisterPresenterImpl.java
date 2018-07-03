@@ -18,7 +18,6 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         this.mRegisterView = registerView;
     }
 
-
     @Override
     public void onRegisterNewUser(final String username, final String password,String c_password,final String email,AppCompatCheckBox appCompatCheckBox) {
         if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(c_password)
@@ -79,10 +78,6 @@ public class RegisterPresenterImpl implements RegisterPresenter {
             success = false;
         }
         return success;
-
-    }
-    private void AddUser(final String usern, final String pass,final String mail){
-
 
     }
 }
