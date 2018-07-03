@@ -11,10 +11,13 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dev.brian.com.bamby.Login.LoginPresenter;
+import dev.brian.com.bamby.Login.LoginPresenterImpl;
+import dev.brian.com.bamby.Login.LoginView;
 import dev.brian.com.bamby.Model.Utils;
 import dev.brian.com.bamby.Realm.Shared;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginView{
 
     @BindView(R.id.login_username)
     EditText username;
@@ -22,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     
     Utils  utils = new Utils();
+    LoginPresenter mLoginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mLoginPresenter = new LoginPresenterImpl(MainActivity.this);
     }
     @Override
     protected void onStart() {
@@ -44,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
     @OnClick(R.id.btnLogin)
     public void onLoginClicked(){
-        if(username.getText().toString().isEmpty()||
+       mLoginPresenter.onCheckUserExists(username.getText().toString(),password.getText().toString());
+       /* if(username.getText().toString().isEmpty()||
                 password.getText().toString().isEmpty()){
             Toast.makeText(this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
         }else{
@@ -56,7 +62,22 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
 
             }
-        }
+        }*/
 
+    }
+
+    @Override
+    public void onLoginValidate() {
+        Toast.makeText(getApplicationContext(), "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginFailed() {
+        Toast.makeText(getApplicationContext(), "Login Failed Try Again", Toast.LENGTH_SHORT).show();
     }
 }
