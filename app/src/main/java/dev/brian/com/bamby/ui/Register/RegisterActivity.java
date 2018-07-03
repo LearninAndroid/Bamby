@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import dev.brian.com.bamby.Home;
 import dev.brian.com.bamby.LoginActivity;
 import dev.brian.com.bamby.Model.User;
@@ -21,21 +23,37 @@ import io.realm.RealmQuery;
 
 public class RegisterActivity extends AppCompatActivity {
 
-
+    @BindView(R.id.signup_username)
+    EditText username;
+    @BindView(R.id.signup_password)
+    EditText password;
+    @BindView(R.id.signup_confirm_password)
+    EditText confirm_password;
+    @BindView(R.id.signup_email)
+    EditText email;
+    @BindView(R.id.terms_check)
+    AppCompatCheckBox compatCheckBox;
 
     Button login,sign_up;
-    EditText username,password,confirm_password,email;
-    AppCompatCheckBox compatCheckBox;
+   // EditText username,password,confirm_password,email;
+   // AppCompatCheckBox compatCheckBox;
     Realm realm;
+
+    @OnClick(R.id.btn_signup)
+    public void onSignUpClicked(){
+
+    }
+    @OnClick(R.id.btn_loginsign)
+    public void onLoginClicked(){
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ButterKnife.bind(this);
         login = (Button)findViewById(R.id.btn_loginsign);
-        username = (EditText)findViewById(R.id.signup_username);
-        password = (EditText)findViewById(R.id.signup_password);
-        confirm_password = (EditText)findViewById(R.id.signup_confirm_password);
-        email = (EditText) findViewById(R.id.signup_email);
         sign_up = (Button)findViewById(R.id.btn_signup);
         compatCheckBox = (AppCompatCheckBox) findViewById(R.id.terms_check);
         realm = Realm.getDefaultInstance();
