@@ -3,7 +3,6 @@ package dev.brian.com.bamby.ui.Register;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.text.TextUtils;
 import android.util.Log;
-
 import dev.brian.com.bamby.Model.User;
 import io.realm.Realm;
 import io.realm.RealmQuery;
