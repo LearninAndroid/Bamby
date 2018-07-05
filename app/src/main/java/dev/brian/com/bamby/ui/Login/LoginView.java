@@ -5,4 +5,6 @@ public interface LoginView {
     void onLoginSuccess();
     void onLoginFailed();
     void onNavigateToHome();
+    String onTestGetUsername();
+
 }

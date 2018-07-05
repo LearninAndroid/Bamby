@@ -76,12 +76,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     public void onNavigateToHome() {
         Intent homeIntent = new Intent(RegisterActivity.this,Home.class);
         startActivity(homeIntent);
+        finish();
     }
 
     @Override
     public void onNavigateToLogin() {
         Intent loginIntent = new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(loginIntent);
+        finish();
     }
 
     @Override

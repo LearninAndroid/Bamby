@@ -72,6 +72,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
+    public String onTestGetUsername() {
+        return username.getText().toString();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
