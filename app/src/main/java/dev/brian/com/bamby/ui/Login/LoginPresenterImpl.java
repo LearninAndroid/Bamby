@@ -1,7 +1,6 @@
 package dev.brian.com.bamby.ui.Login;
 
 import android.text.TextUtils;
-
 import dev.brian.com.bamby.Model.User;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -9,6 +8,7 @@ import io.realm.RealmQuery;
 public class LoginPresenterImpl implements LoginPresenter {
     Realm realm;
     LoginView mLoginView;
+
     public LoginPresenterImpl(LoginView loginView){
         this.mLoginView = loginView;
 
