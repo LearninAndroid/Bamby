@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,6 +20,7 @@ import dev.brian.com.bamby.LoginActivity;
 import dev.brian.com.bamby.Model.User;
 import dev.brian.com.bamby.R;
 import dev.brian.com.bamby.Realm.Shared;
+import dev.brian.com.bamby.ui.Navigation;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
@@ -33,6 +36,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     EditText email;
     @BindView(R.id.terms_check)
     AppCompatCheckBox compatCheckBox;
+
+    @Inject
+    Navigation navigation;
 
 
     RegisterPresenter mRegisterPresenter;
@@ -84,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
         Intent loginIntent = new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(loginIntent);
         finish();
+       // navigation.toLogin(this);
     }
 
     @Override
