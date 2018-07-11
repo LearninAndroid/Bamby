@@ -15,6 +15,7 @@ import dev.brian.com.bamby.ui.Login.LoginView;
 import dev.brian.com.bamby.Model.Utils;
 import dev.brian.com.bamby.Realm.Shared;
 import dev.brian.com.bamby.ui.Register.RegisterActivity;
+import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
@@ -51,12 +52,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void onLoginValidate() {
-        Toast.makeText(getApplicationContext(), "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onLoginSuccess() {
-        Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
     }
 
     @Override

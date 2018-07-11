@@ -6,4 +6,5 @@ public interface RegisterPresenter {
     void onRegisterNewUser(String username,String password,String confirm,String email,AppCompatCheckBox appCompatCheckBox);
     void onLognClicked();
 
+
 }

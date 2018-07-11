@@ -3,6 +3,8 @@ package dev.brian.com.bamby.ui.Register;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
+
 import dev.brian.com.bamby.Model.User;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -22,6 +24,10 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(c_password)
                 ||TextUtils.isEmpty(email)){
             mRegisterView.onRegisterValidate();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            mRegisterView.onEmailPatternError();
             return;
         }
         if(!password.equals(c_password)){

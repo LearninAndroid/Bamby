@@ -13,7 +13,7 @@ public class BaseActivity extends AppCompatActivity implements MvpView{
 
     public AppComponent activityComponent() {
         if(mActivityComponent == null){
-            //mActivityComponent = DaggerAppComponent.builder().ac
+           // mActivityComponent = DaggerAppComponent.builder().
         }
         return mActivityComponent;
     }

@@ -21,6 +21,7 @@ import dev.brian.com.bamby.Model.User;
 import dev.brian.com.bamby.R;
 import dev.brian.com.bamby.Realm.Shared;
 import dev.brian.com.bamby.ui.Navigation;
+import es.dmoral.toasty.Toasty;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
@@ -65,17 +66,17 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @Override
     public void onRegisterValidate() {
-        Toast.makeText(getApplicationContext(), "Please Fill In All Required Fields", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Please Fill In All Required Fields", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRegisterSuccess() {
-        Toast.makeText(getApplicationContext(), "New User Added Successfully", Toast.LENGTH_SHORT).show();
+        Toasty.success(getApplicationContext(), "New User Added Successfully", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRegisterFailure() {
-        Toast.makeText(getApplicationContext(), "Failed To Add User, Please Try Again Later", Toast.LENGTH_SHORT).show();
+        Toasty.success(getApplicationContext(), "Failed To Add User, Please Try Again Later", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -95,17 +96,22 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @Override
     public void onMatchValidate() {
-        Toast.makeText(getApplicationContext(), "Make Sure That Passwords Match", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Make Sure That Passwords Match", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onTermsValidate() {
-        Toast.makeText(getApplicationContext(), "Please Accept Our Terms of Agreement ", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Please Accept Our Terms of Agreement ", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onUserExists() {
-        Toast.makeText(getApplicationContext(), "Username Already Taken, Try Changing Username", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Username Already Taken, Try Changing Username", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onEmailPatternError() {
+        Toasty.error(getApplicationContext(),"Please Enter a Valid Email Address", Toast.LENGTH_SHORT).show();
     }
 
 }

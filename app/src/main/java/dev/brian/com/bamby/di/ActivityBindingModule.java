@@ -15,4 +15,6 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector
     abstract RegisterActivity registerActivity();
 
+
+
 }

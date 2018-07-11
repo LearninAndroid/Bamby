@@ -9,6 +9,7 @@ public interface RegisterView {
     void onMatchValidate();
     void onTermsValidate();
     void onUserExists();
+    void onEmailPatternError();
 
 
 }

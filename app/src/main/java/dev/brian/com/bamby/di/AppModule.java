@@ -25,7 +25,6 @@ abstract class AppModule {
     static Realm providesRealm(){
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
         return Realm.getInstance(realmConfiguration);
-
     }
 
     @Binds
