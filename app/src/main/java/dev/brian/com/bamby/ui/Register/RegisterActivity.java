@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     @Inject
     Navigation navigation;
 
-
     RegisterPresenter mRegisterPresenter;
 
     @OnClick(R.id.btn_signup)
