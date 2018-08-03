@@ -5,18 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Register.RegisterActivity">
-    <android.support.v7.widget.CardView
-        android:background="@drawable/buttonstyle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,7 +21,6 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/circle"
                     android:padding="5dp"
                     android:tint="@color/white"
@@ -184,14 +173,14 @@
                 android:text="I Agree to the Terms Of Service"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="5dp"/>
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/terms_check"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/buttonstylepink"
                 android:textColor="@color/white"
@@ -205,14 +194,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_signup"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/transparent"
 
                 android:text="Already a member? Login Here"/>
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </RelativeLayout>

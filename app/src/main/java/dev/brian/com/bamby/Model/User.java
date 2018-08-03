@@ -1,5 +1,7 @@
 package dev.brian.com.bamby.Model;
 
+import android.databinding.BaseObservable;
+
 import io.realm.RealmObject;
 
 public class User extends RealmObject {
